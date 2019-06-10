@@ -63,7 +63,6 @@ class PkAdaptor(abco.Adaptor):
                     self.pk_data[SCALING][SERVICES].append(service)
             logger.info("Policy of {0} is translated".format(target.name))
 
-        if self.validate is False:
         if tmp:
             self._yaml_write(self.tmp_path)
             logger.info("Updated PK file created")
