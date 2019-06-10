@@ -425,7 +425,7 @@ class OccopusAdaptor(abco.Adaptor):
             path = self.infra_def_path_output_tmp
         else:
             path = self.infra_def_path_input
-        if self.validate is False:
+        if self.validate is False or tmp:
             try:
                 with open(path, 'r') as f:
                     infra_def = yaml.round_trip_load(f, preserve_quotes=True)
