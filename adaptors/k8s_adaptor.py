@@ -4,6 +4,7 @@ import logging
 import shutil
 import filecmp
 import time
+import copy
 
 import kubernetes.client
 import kubernetes.config
@@ -68,8 +69,8 @@ class KubernetesAdaptor(base_adaptor.Adaptor):
         logger.info("Translating into Kubernetes Manifests")
         self.status = "Translating..."
         tpl_translate = self.tpl
-        nodes = tpl_translate.nodetemplates
-        repositories = tpl_translate.repositories
+        nodes = copy.deepcopy(tpl_translate.nodetemplates)
+        repositories = copy.deepcopy(tpl_translate.repositories)
         
         for node in sorted(nodes, key=lambda x: x.type, reverse=True):
             interface = {}
